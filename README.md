@@ -1,4 +1,4 @@
-# Retro Tic-Tac-Toe => https://retro-tictactoe.vercel.app/
+# Retro Tic-Tac-Toe ([Live](https://retro-tictactoe.vercel.app/))
 
 A Tic-Tac-Toe game built with React and Zustand, featuring a retro-inspired UI, global state management, and win-state celebrations.
 
