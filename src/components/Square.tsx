@@ -1,4 +1,9 @@
-export default function Square({ value, onSquareClick }) {
+type SquareProps = {
+  value: string | null
+  onSquareClick: () => void
+}
+
+export default function Square({ value, onSquareClick }: SquareProps) {
   let color = ''
 
   if (value === 'X') color = 'is-primary'

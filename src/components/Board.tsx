@@ -13,7 +13,7 @@ export default function Board() {
     const status = calculateStatus(winner, turns, player)
     const resetGame = useGameStore((state) => state.resetGame)
 
-    function handleClick(i) {
+    function handleClick(i: number) {
         if (squares[i] || winner) return
         const nextSquares = squares.slice()
         nextSquares[i] = player
@@ -21,7 +21,7 @@ export default function Board() {
         setXIsNext(!xIsNext)
       }
 
-      function calculateWinner(squares) {
+      function calculateWinner(squares: (string | null)[]) {
         const lines = [
           [0, 1, 2],
           [3, 4, 5],
@@ -43,11 +43,11 @@ export default function Board() {
         return null
       }
       
-      function calculateTurns(squares) {
-        return squares.filter((square) => !square).length
+      function calculateTurns(squares: (string | null)[]) {
+        return squares.filter((square: string | null ) => !square).length
       }
       
-      function calculateStatus(winner, turns, player) {
+      function calculateStatus(winner: string | null, turns: number, player: string) {
         if (!winner && !turns) return 'Draw'
         if (winner) return `PLAYER ${winner} WINS!`
         return `Next player: ${player}`

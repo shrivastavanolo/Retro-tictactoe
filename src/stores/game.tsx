@@ -4,7 +4,11 @@ import { combine } from 'zustand/middleware'
 export const useGameStore = create(
   combine({ squares: Array(9).fill(null), xIsNext: true }, (set) => {
     return {
-      setSquares: (nextSquares) => {
+      setSquares: (
+        nextSquares:
+          | (string | null)[]
+          | ((prev: (string | null)[]) => (string | null)[])
+        ) => {
         set((state) => ({
           squares:
             typeof nextSquares === 'function'
@@ -12,7 +16,11 @@ export const useGameStore = create(
               : nextSquares,
         }))
       },
-      setXIsNext: (nextXIsNext) => {
+      setXIsNext: (
+        nextXIsNext:
+          | boolean
+          | ((prev: boolean) => boolean)
+      ) => {
         set((state) => ({
           xIsNext:
             typeof nextXIsNext === 'function'
