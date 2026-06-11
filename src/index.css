@@ -1,11 +1,76 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: #212529;
-  color: white;
-  font-family: "Press Start 2P", monospace;
+  overflow: hidden;
 
   display: flex;
   justify-content: center;
   align-items: center;
+
+  font-family: "Press Start 2P", monospace;
+
+  background-color: #0f172a !important;
+
+  background-image:
+    linear-gradient(rgba(0, 106, 255, 0.15) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(0, 255, 26, 0.15) 2px, transparent 2px);
+
+  background-size: 32px 32px;
+
+  animation: gridMove 8s linear infinite;
+}
+
+@keyframes gridMove {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 32px 32px;
+  }
+}
+
+body::before {
+  content: "";
+
+  position: fixed;
+  inset: 0;
+
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 251, 0, 0.265), transparent 300px),
+    radial-gradient(circle at 80% 30%, rgba(21, 255, 0, 0.15), transparent 300px),
+    radial-gradient(circle at 50% 80%, rgba(0, 42, 255, 0.1), transparent 250px),
+    radial-gradient(circle at 40% 20%, rgba(255, 68, 0, 0.265), transparent 300px),
+    radial-gradient(circle at 70% 70%, rgba(21, 255, 0, 0.15), transparent 300px),
+    radial-gradient(circle at 10% 80%, rgba(255, 0, 0, 0.1), transparent 250px);
+
+  pointer-events: none;
+
+  animation: floatGlow 10s ease-in-out infinite alternate;
+}
+
+@keyframes floatGlow {
+  from {
+    transform: translateY(-10px);
+  }
+
+  to {
+    transform: translateY(10px);
+  }
+}
+
+body::after {
+  content: "";
+
+  position: fixed;
+  inset: 0;
+
+  background:
+    repeating-linear-gradient(
+      transparent 0px,
+      transparent 3px,
+      rgba(255,255,255,0.03) 4px
+    );
+
+  pointer-events: none;
 }
