@@ -1,22 +1,20 @@
-export default function Square({value, onSquareClick}) {
-    return (
+export default function Square({ value, onSquareClick }) {
+  let color = ''
+
+  if (value === 'X') color = 'is-primary'
+  if (value === 'O') color = 'is-warning'
+
+  return (
     <button
+      className={`nes-btn ${color}`}
       style={{
-        color: '#333',
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 0,
-        backgroundColor: '#fff',
-        border: '1px solid #999',
-        outline: 0,
-        borderRadius: 0,
-        fontSize: '1rem',
-        fontWeight: 'bold',
+        width: "80px",
+        height: "80px",
+        fontSize: "2rem",
       }}
       onClick={onSquareClick}
     >
       {value}
     </button>
-    )
+  )
 }
