@@ -1,5 +1,6 @@
 import Square from './Square'
 import { useGameStore } from '../stores/game'
+import Confetti from 'react-confetti'
 
 export default function Board() {
     const xIsNext = useGameStore((state) => state.xIsNext)
@@ -10,6 +11,7 @@ export default function Board() {
     const winner = calculateWinner(squares)
     const turns = calculateTurns(squares)
     const status = calculateStatus(winner, turns, player)
+    const resetGame = useGameStore((state) => state.resetGame)
 
     function handleClick(i) {
         if (squares[i] || winner) return
@@ -47,17 +49,29 @@ export default function Board() {
       
       function calculateStatus(winner, turns, player) {
         if (!winner && !turns) return 'Draw'
-        if (winner) return `Winner ${winner}`
+        if (winner) return `PLAYER ${winner} WINS!`
         return `Next player: ${player}`
       }
 
       return (
+        <>
+        {winner && <Confetti recycle={false} numberOfPieces={500} />}
         <div className="nes-container is-dark with-title">
           <p className="title">TIC TAC TOE</p>
       
           <p className="nes-text is-success">
             {status}
           </p>
+
+          {(winner || status === 'Draw') && (
+            <button
+              className="nes-btn is-success"
+              onClick={resetGame}
+              style={{ width: "100%" }}
+            >
+              Play Again
+            </button>
+          )}
       
           <div
             style={{
@@ -75,5 +89,6 @@ export default function Board() {
             ))}
           </div>
         </div>
+        </>
       )
   }

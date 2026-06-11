@@ -20,6 +20,11 @@ export const useGameStore = create(
               : nextXIsNext,
         }))
       },
+      resetGame: () =>
+        set({
+          squares: Array(9).fill(null),
+          xIsNext: true,
+        }),
     }
   }),
 )
